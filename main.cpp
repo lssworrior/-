@@ -1,36 +1,47 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "stdafx.h"
+#include "CppUnitTest.h"
+#include"../软件工程作业/test.h"
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-int  Max(int n,int a[])
+namespace UnitTest2
 {
-    int i;
-	int sum=0;
-	int max=0;
-	    for(i=0;i<n;i++)
-    {
-		sum+=a[i];
-		if(sum<0)
-            sum=0;
-        else
-        {
-            if(max<sum)
-                max=sum;
-        }
-	}
-	return max;
+TEST_CLASS(UnitTest1)
+{
+public:
+
+TEST_METHOD(TestMethod1)
+{
+int n = 6;
+int a[8] = { 0，1，2，3，4，5 };
+int True = 18;
+Assert::AreEqual(True, Max(a,n));
 }
-int main()
+
+};
+TEST_CLASS(UnitTest2)
 {
-	int n,a[1000],max=0,i;
-	scanf("%d",&n);
-	if (n<=0)
-        printf("error 请输入n为正数");
-    else
-	{
-	    for(i=0;i<n;i++)
-		scanf("%d",&a[i]);
-        max=Max(n,a);
-	    printf("%d\n",max);
-	}
-    return 0;
+public:
+
+TEST_METHOD(TestMethod1)
+{
+int n = 6;
+int a[6] = { -1，-3，-5,39，-7,9 };
+int True = 20;
+Assert::AreEqual(True, Max(a, n));
+}
+
+};
+TEST_CLASS(UnitTest3)
+{
+public:
+
+TEST_METHOD(TestMethod1)
+{
+int n = 5;
+int a[5] = { -1,-2,-3,-4,-5 };
+int True = 0;
+Assert::AreEqual(True, Max(a, n));
+}
+
+};
 }
